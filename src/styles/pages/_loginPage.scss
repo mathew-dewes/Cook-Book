@@ -1,0 +1,29 @@
+@use '../utils/breakpoints' as b;
+
+
+.login{
+    margin-top: 60px;
+                 @include b.breakpoint-down(medium) {
+        //    margin-top: 30px;
+                 }
+    
+    
+    h1{
+        margin-bottom: 10px;
+    }
+   input{
+    margin: 20px 10px;
+             @include b.breakpoint-down(medium) {
+                display: flex;
+    }
+   }
+
+            @include b.breakpoint-down(medium) {
+ button{
+    margin-bottom: 20px;
+ }
+ form{
+    margin-top: 30px;
+ }
+    }
+}

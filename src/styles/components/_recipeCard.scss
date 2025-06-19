@@ -1,0 +1,96 @@
+@use '../utils/breakpoints' as b;
+
+.recipe-cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    .star-rating{
+    margin-bottom: 20px;
+}
+
+
+}
+
+.recipe-card{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 30px;
+
+ 
+    display: flex;
+    justify-content: space-between;
+
+    &__left{
+        width: 300px;
+        
+           @include b.breakpoint-down(small) {
+     width: 200px;
+
+    }
+
+ h2{
+
+    margin-bottom: 10px;
+ }
+    }
+
+&__right{
+    img{
+        margin-bottom: 10px;
+   
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+                   @include b.breakpoint-down(small) {
+   display: none;
+
+    }
+    }
+}
+
+
+    &__buttons{
+        display: flex;
+        gap: 10px;
+    }
+
+    &__user-link{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom:10px;
+    }
+
+  
+}
+
+.card-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  height: calc(1.4em * 2); 
+  margin-bottom: 20px;
+             @include b.breakpoint-down(small) {
+font-size: 12px;
+
+    }
+}
+
+           @include b.breakpoint-down(small) {
+     .star-rating{
+        margin-top: 40px;
+     }
+    }
+
+
+
+
+
+
+

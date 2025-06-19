@@ -1,0 +1,89 @@
+@use '../utils/breakpoints' as b;
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    margin-right: 200px;
+
+
+           @include b.breakpoint-down(large) {
+ 
+        margin: 0;
+        margin-top: 30px;
+        text-align: center;
+        flex-direction: column;
+  
+
+    }
+
+    &__left{
+       p{
+        margin-top: 10px;
+       }
+    }
+  
+
+    .active{
+        font-weight: 600;
+        color: #EF9651;
+    }
+    a:hover{
+
+          transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+    }
+
+      &__links{
+        display: flex;
+        gap: 60px;
+
+        li{
+            cursor: pointer;
+        }
+                  @include b.breakpoint-down(large) {
+                    gap: 20px;
+                    // justify-content: space-between;
+             
+                    
+                  }
+
+
+
+    }
+
+                 @include b.breakpoint-down(medium) {
+                .hide{
+                  display: none;
+                }
+                .show{
+                  display: block;
+                }
+    }
+
+    
+
+    
+
+}
+
+.show{
+  display: none;
+}
+
+#logout-button{
+height: 30px;
+  width: 80px;
+  text-align: center;
+  padding: 5px;
+}
+
+.hello{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+

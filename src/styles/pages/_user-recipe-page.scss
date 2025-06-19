@@ -1,0 +1,40 @@
+@use '../utils/breakpoints' as b;
+
+
+.user-recipe-page{
+margin-top: 60px;
+
+&__recipe-cards{
+        margin-top: 30px;
+    }
+
+&__profile{
+    margin-bottom: 60px;
+
+    h2{
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    
+}
+
+
+
+
+}
+
+#add-link{
+    font-weight: 600;
+    color: #EF9651;;
+    
+}
+
+
+.image-uploader{
+    margin-top: 20px;
+}
+
+.user-bio{
+    width: 100%;
+}

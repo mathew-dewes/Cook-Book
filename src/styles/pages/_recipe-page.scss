@@ -1,0 +1,208 @@
+@use '../utils/breakpoints' as b;
+
+
+.recipe-page{
+    
+    &__recipe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 220px;
+    padding: 80px 100px;
+                     @include b.breakpoint-down(medium) {
+            padding: 60px 0px;
+    }
+
+}
+
+&__recipe-left{
+    width: 40%;
+
+    h1{
+        margin-bottom: 10px;
+    }
+    img{
+        margin: 30px 0;
+    }
+                     @include b.breakpoint-down(medium) {
+                width: 100%;
+    }
+    
+
+ 
+}
+
+
+
+&__instructions{
+    display: flex;
+    gap: 300px;
+    margin-top: 15px;
+
+    li{
+        padding: 5px;
+        
+    }
+    p{
+        font-weight: 600;
+    }
+                     @include b.breakpoint-down(medium) {
+                flex-direction: column;
+                gap: 50px;
+                
+    }
+
+
+}
+
+&__instructions-left, &__instructions-right{
+    width: 500px;
+                     @include b.breakpoint-down(medium) {
+                width: 100%;
+    }
+
+}
+
+&__instructions-left{
+    ul{
+        margin-top: 30px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+    }
+
+    li{
+        list-style: circle;
+    }
+}
+&__instructions-right{
+    ol{
+        margin-top: 30px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+    }
+
+ 
+}
+
+
+
+&__prep-ratings{
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+&__comment-section{
+  margin-top: 20px;
+}
+
+
+
+
+&__comments{
+
+    max-width: 800px;
+    margin-top: 30px;
+}
+&__comment{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+
+            .comment-rating{
+                p{
+                    margin-bottom: 5px;
+                }
+            }
+
+
+
+
+}
+
+&__buttons{
+    display: flex;
+    margin: 10px 0;
+}
+
+&__review-text{
+    margin: 10px 0;
+
+
+}
+
+#recipe-image{
+    padding: 50px;
+}
+
+.liked{
+    background-color: #EF9651;
+}
+.saved{
+    background-color: #EF9651;
+}
+
+.likes-and-comments{
+    margin-top: 30px;
+}
+
+
+.hide{
+       display: none;
+                 @include b.breakpoint-down(medium) {
+             display: block;
+    }
+
+}
+
+.show{
+    display: block;
+}
+
+#recipeImage{
+                 @include b.breakpoint-down(medium) {
+                display: none
+    }
+}
+.avatar{
+                 @include b.breakpoint-down(medium) {
+                display: none
+    }
+}
+
+#deleteButton{
+                     @include b.breakpoint-down(medium) {
+                    padding: 10px;
+    margin: auto;
+    }
+
+}
+
+
+
+
+}
+
+
+.comment-form{
+    margin: 20px 0;
+    &__rating{
+margin: 10px 0;
+display: flex;
+gap: 30px;
+    }
+
+    &__comment-section{
+        margin-top: 20px;
+    }
+
+    textarea{
+        margin: 10px 0;
+    }
+}
+
+

@@ -1,0 +1,55 @@
+@use '../utils/breakpoints' as b;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, ul{
+    margin: 0;
+    padding: 0;
+    color: white;
+
+}
+
+
+
+body {
+  height: 100%;
+  margin: 0 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  @include b.breakpoint-down(large) {
+                   margin: 0 25px;
+             
+                    
+                  }
+
+}
+
+.layout{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a{
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+ul > li{
+    list-style: none;
+}
