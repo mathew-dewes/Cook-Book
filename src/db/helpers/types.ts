@@ -1,19 +1,18 @@
 export type SavedRecipe = {
-  id: string;
-  user_id: string;
-  recipe_id: string;
-  like_count: number;
-  comment_count: number;
   recipes: {
     id: string;
     title: string;
     description: string;
     image_url: string;
+    created_at: string;
+    prep_time: number;
+    likes: {id: number}[];
+    comments: { rating: number }[];
     users: {
       name: string;
       image_url: string;
-    };
-  };
+    },
+  }[]; // 👈 recipes is an array now
 };
 
 export type Recipe = {
@@ -28,7 +27,7 @@ export type Recipe = {
     recipeId: string
     userId: string,
     postDate: string,
-    averageRating: number,
+    averageRating: string,
     created_at: string,
     updated_at: string
     
@@ -40,4 +39,32 @@ export type AddCommentArgs = {
   recipeId: string;
   userId: string;
   rating?: number;
+};
+
+
+
+
+
+
+
+export type Comment = {
+  rating: number;
+  // Add more if needed
+};
+
+export type User = {
+  name: string;
+  image_url: string;
+};
+
+export type BobRecipe = {
+  id: string;
+  title: string;
+  description: string;
+  image_url: string;
+  created_at: string;
+  prep_time: number;
+  likes: { id: number }[];
+  comments: Comment[];
+  users: User;
 };

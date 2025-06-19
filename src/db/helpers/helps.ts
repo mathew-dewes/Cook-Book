@@ -1,4 +1,4 @@
-import { supabase } from "../../../supabase-client";
+
 
 export function wait(duration: number) {
   return new Promise(resolve => {
@@ -6,6 +6,6 @@ export function wait(duration: number) {
   })
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 
 

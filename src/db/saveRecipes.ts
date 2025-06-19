@@ -1,6 +1,7 @@
 import { revalidatePath } from "next/cache";
 import { supabase } from "../../supabase-client";
 import { wait } from "./helpers/helps";
+import { BobRecipe } from "./helpers/types";
 
 
 
@@ -9,16 +10,33 @@ import { wait } from "./helpers/helps";
 
 
 
-export async function getSavedRecipes(id: string | undefined) {
+
+export async function getSavedRecipes(id: string): Promise<BobRecipe[]> {
     const { data, error } = await supabase .from("saved_recipes")
 
-  .select(`recipes(*, users(name, image_url), likes(id), comments(rating))`).eq("user_id", id)
-        // let queryBuilder = supabase.from('recipes').select(`*, users(name, image_url), likes(id), comments(id)`);
+  .select(`
+      recipes (
+        id,
+        title,
+        description,
+        image_url,
+        created_at,
+        prep_time,
+        comments(rating),
+        users (
+          name,
+          image_url
+        ),
+        likes(id)
+      )
+    `).eq("user_id", id)
     if (error) {
         console.log(error);
         return []
     }
-    return data
+    
+
+    return data?.map((item) => item.recipes) ?? []
 }
 
 

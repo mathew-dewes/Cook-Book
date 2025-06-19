@@ -112,33 +112,6 @@ export async function getUsersRecipes(id: string){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export async function getUserRecipes(id: string ){
-//     const {data, error} = await supabase.from("recipes").select(`*, users(name, image_url), likes(*), comments(rating)`).eq("user_id", id);
-//     if (error){
-//         console.log(error);
-//         return []
-        
-//     }
-
-//     return data ?? []
-// }
-
-
 export async function getRecipeIngredients(id: string){
     const {data, error} = await supabase.from("ingredients").select().eq("recipe_id", id);
     if (error){

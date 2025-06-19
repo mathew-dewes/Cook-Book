@@ -2,7 +2,6 @@
 import bcrypt from "bcryptjs";
 import { supabase } from "../../supabase-client";
 import { executeAction } from "../actions/executeAction";
-import { redirect } from "next/navigation";
 
 
 

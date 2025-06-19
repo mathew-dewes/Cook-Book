@@ -3,23 +3,27 @@
 
 import { auth } from "@/auth";
 import SaveRecipeCard from "@/components/SavedRecipeCard";
+import { BobRecipe } from "@/db/helpers/types";
 
 import { getSavedRecipes } from "@/db/saveRecipes";
 import Link from "next/link";
 
-// import { SavedRecipe } from "@/db/types";
-
-// Add types to getSaveReipe to fix ts issues
-// Add unique constraints for using save 2 of the same recipes. Handle on both front and back end
 
 
 export default async function RecipesPage(){
     const session = await auth();
     const userId = session?.user?.id as string;
+
     
     
-    const recipes = await getSavedRecipes(userId) as any;
+    const recipes: BobRecipe[] = await getSavedRecipes(userId);
     const noRecipes = recipes.length === 0
+    console.log(recipes[0].comments);
+    
+
+
+
+    
 
 
     
@@ -40,7 +44,7 @@ return (
             <div className="recipe-cards">
                 
                 {recipes.map((recipe)=>{
-                    const ratings = recipe.recipes.comments?.map((r: { rating: number }) => r.rating) || [];
+                    const ratings = recipe.comments?.map((r: { rating: number }) => r.rating) || [];
   const averageRating =
     ratings.length > 0
       ? (ratings.reduce((acc: number, r: number) => acc + r, 0) / ratings.length).toFixed(1)
@@ -49,18 +53,17 @@ return (
                     
    return(
 <SaveRecipeCard 
-            key={recipe.recipes.id}
-            title={recipe.recipes.title}
-            description={recipe.recipes.description}
-            username={recipe.recipes.users.name}
-            thumbnail={recipe.recipes.users.image_url}
-            recipeImage={recipe.recipes.image_url}
-            likeCount={recipe.recipes.likes.length}
-            commentCount={recipe.recipes.comments.length}
-            recipeId={recipe.recipes.id}
-            userId={userId}
-            averageRating={averageRating}
-            />
+           key={recipe.id}
+           title={recipe.title}
+           description={recipe.description}
+           username={recipe.users.name}
+           thumbnail={recipe.users.image_url}
+           recipeImage={recipe.image_url}
+           likeCount={recipe.likes.length}
+           commentCount={recipe.comments.length}
+           recipeId={recipe.id}
+           userId={userId}
+           averageRating={averageRating} postDate={""} created_at={""} updated_at={""}            />
    )                 
 
                 
