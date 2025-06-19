@@ -56,20 +56,19 @@ return (
       : "0.0";
           return(
              <RecipeCard 
-                    key={recipe.id}
-                    title={recipe.title}
-                    description={recipe.description}
-                    username={recipe.users.name}
-                    thumbnail={recipe.users.image_url}
-                    recipeImage={recipe.image_url}
-                    likeCount={recipe.likes.length}
-                    commentCount={recipe.comments.length}
-                    recipeId={recipe.id}
-                    userId={recipe.user_id}
-                    postDate={new Date(recipe.created_at).toLocaleDateString("en-GB")}
-                    averageRating={averageRating}
-                    updated_at={recipe.users.updated_at}
-                    />
+              key={recipe.id}
+              title={recipe.title}
+              description={recipe.description}
+              username={recipe.users.name}
+              thumbnail={recipe.users.image_url}
+              recipeImage={recipe.image_url}
+              likeCount={recipe.likes.length}
+              commentCount={recipe.comments.length}
+              recipeId={recipe.id}
+              userId={recipe.user_id}
+              postDate={new Date(recipe.created_at).toLocaleDateString("en-GB")}
+              averageRating={averageRating}
+              updated_at={recipe.users.updated_at} created_at={""}                    />
           );
                    
           })}
