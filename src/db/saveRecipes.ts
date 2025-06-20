@@ -38,10 +38,18 @@ export async function getSavedRecipes(userId: string): Promise<SavedRecipe[]> {
     return [];
   }
 
+
   const recipes = (data ?? []).flatMap((row) =>
     Array.isArray(row.recipes) ? row.recipes : [row.recipes]
   );
-  return recipes;
+
+  // ✅ Extract first user from array so it matches your type
+  const formatted = recipes.map((r) => ({
+    ...r,
+    users: Array.isArray(r.users) ? r.users[0] : r.users,
+  }));
+
+  return formatted;
 }
 
 
