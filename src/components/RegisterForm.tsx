@@ -17,7 +17,7 @@ export default function RegisterForm() {
         }}>
             <div className="register__form">
                 <div className="input">
-                    <div className="bob" >
+                    <div className="inputLabel" >
                         <label htmlFor="">Username</label>
                     </div>
                     <div>
@@ -27,7 +27,7 @@ export default function RegisterForm() {
 
                 </div>
                 <div className="input">
-                    <div className="bob" >
+                    <div className="inputLabel" >
                         <label htmlFor="">Email</label>
                     </div>
                     <div>
@@ -37,7 +37,7 @@ export default function RegisterForm() {
 
                 </div>
                 <div className="input">
-                    <div className="bob" >
+                    <div className="inputLabel" >
                         <label htmlFor="">Password</label>
                     </div>
                     <div>
@@ -47,7 +47,7 @@ export default function RegisterForm() {
 
                 </div>
                 <div className="input">
-                    <div className="bob" >
+                    <div className="inputLabel" >
                         <label htmlFor="">Bio (Optional):</label>
                     </div>
                     <div>

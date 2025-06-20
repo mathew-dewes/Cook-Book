@@ -48,6 +48,6 @@ export type SavedRecipe = {
   created_at: string;
   prep_time: number;
   comments: { rating: number }[];
-  users: { name: string; image_url: string }[]; // ✅ NOT an array
+  users: { name: string; image_url: string }; // ✅ NOT an array
   likes: { id: string }[];
 };

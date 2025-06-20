@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 
 
 
-export default function ProfileImage({ user }: { user: { id: string; name: string; image_url: string; updated_at: string } }) {
+export default function ImageUploader({ user }: { user: { id: string; name: string; image_url: string; updated_at: string } }) {
 
   const router = useRouter()
 

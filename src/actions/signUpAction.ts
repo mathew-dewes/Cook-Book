@@ -11,7 +11,7 @@ const signUp = async (formData: FormData) => {
     return executeAction({
         actionFn: async () => {
             const name = formData.get("name")?.toString()
-            const email = formData.get('email')?.toString();
+            const email = formData.get('email')?.toString().toLocaleLowerCase();
             const password = formData.get('password')?.toString();
             const bio = formData.get("bio")?.toString()
             if (!name || !email || !password) { throw new Error("Missing required fields"); }

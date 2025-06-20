@@ -21,6 +21,8 @@ export default async function RecipesPage(){
     const noRecipes = recipes.length === 0;
 
     
+
+    
     
     
 
@@ -44,16 +46,20 @@ return (
             <div className="recipe-cards">
                 
                 {recipes.map((recipe)=>{
-                      const user = recipe.users?.[0] as { name: string; image_url: string } | undefined;
                     const ratings = recipe.comments?.map((r: { rating: number }) => r.rating) || [];
   const averageRating =
     ratings.length > 0
       ? (ratings.reduce((acc: number, r: number) => acc + r, 0) / ratings.length).toFixed(1)
       : "0.0";
 
-      console.log("recipe.users", recipe.users);
+      const username = recipe.users.name
+      const thumbnail = recipe.users.image_url
 
-       // name and image_url
+
+ 
+  
+
+
     
       
 
@@ -65,8 +71,8 @@ return (
            key={recipe.id}
            title={recipe.title}
            description={recipe.description}
-           username={user?.name}
-           thumbnail={user?.image_url}
+           username={username}
+           thumbnail={thumbnail}
            recipeImage={recipe.image_url}
            likeCount={recipe.likes.length}
            commentCount={recipe.comments.length}

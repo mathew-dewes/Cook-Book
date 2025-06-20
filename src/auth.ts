@@ -4,9 +4,13 @@ import Credentials from "next-auth/providers/credentials"
 
 import { supabase } from "../supabase-client";
 import bcrypt from "bcryptjs";
+import { loginSchema } from "./db/helpers/validation";
 
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  pages:{
+    signIn: "/login"
+  },
   providers: [
     Credentials({
       credentials: {
@@ -14,11 +18,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        const { email, password } = credentials as {
-          email: string;
-          password: string
-        }
-        return authenticate({ email, password })
+        const parsed = loginSchema.safeParse(credentials);
+
+  if (!parsed.success) {
+   return null;
+  }
+
+  const user = await authenticate(parsed.data);
+
+  if (!user) {
+       return null; 
+  }
+
+  return user;
 
       }
     })

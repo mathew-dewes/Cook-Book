@@ -44,7 +44,7 @@ export default function AddRecipeForm({userId}:{userId: string}) {
                 </div>
                 <div className="add__input">
                    <p>Add image - Optional</p>
-                    <input name="image" accept="images/*" type="file" placeholder="Recipe name" onChange={handleFileChange}/>
+                    <input name="image"  type="file" placeholder="Recipe Image" onChange={handleFileChange}/>
                 </div>
                 <div className="add__input">
                     <p>Description:</p>

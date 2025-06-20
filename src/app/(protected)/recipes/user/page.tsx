@@ -1,7 +1,7 @@
 
 
 import { auth } from "@/auth";
-import ProfileImage from "@/components/ProfileImage";
+import ImageUploader from "@/components/ImageUploader";
 import RecipeCard from "@/components/RecipeCard";
 
 
@@ -20,21 +20,13 @@ export default async function Page() {
   const user = await getUserDetails(id);
 
   
-  
-  
-
-  
-
-  
-
-  
-return (
+  return (
     <div className="user-recipe-page">
         <div className="user-recipe-page__profile">
           <div className="user-recipe-page__profile-top">
         <Image className="avatar" alt="Profile-image" src={`${user.image_url}?v=${new Date().getTime()}`} height={200} width={200}></Image>
  
-            <ProfileImage user={user}/>
+            <ImageUploader user={user}/>
  
  
 
