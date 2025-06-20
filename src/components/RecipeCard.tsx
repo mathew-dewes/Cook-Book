@@ -1,8 +1,7 @@
-// import RemoveSaveButton from "@/app/recipes/saved/_removeSaveButton";
-import { Recipe } from "@/db/helpers/types";
 import Image from "next/image";
 import Link from "next/link";
 import { StarRating } from "./StarRating";
+import { RecipeProps } from "@/db/helpers/types";
 
 
 
@@ -21,7 +20,7 @@ export default function RecipeCard({
     averageRating,
     updated_at
 
-}:Recipe) {
+}: RecipeProps) {
 
 
 

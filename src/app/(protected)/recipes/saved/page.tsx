@@ -3,7 +3,8 @@
 
 import { auth } from "@/auth";
 import SaveRecipeCard from "@/components/SavedRecipeCard";
-import { BobRecipe } from "@/db/helpers/types";
+
+
 
 import { getSavedRecipes } from "@/db/saveRecipes";
 import Link from "next/link";
@@ -16,21 +17,20 @@ export default async function RecipesPage(){
 
     
     
-    const recipes: BobRecipe[] = await getSavedRecipes(userId);
-    const noRecipes = recipes.length === 0
-    console.log(recipes[0].comments);
-    
-
-
+    const recipes = await getSavedRecipes(userId);
+    const noRecipes = recipes.length === 0;
 
     
-
+    
+    
 
     
 
+    
+ 
+    
 
-       
-
+    
 
 return (
     
@@ -44,11 +44,20 @@ return (
             <div className="recipe-cards">
                 
                 {recipes.map((recipe)=>{
+                      const user = recipe.users?.[0] as { name: string; image_url: string } | undefined;
                     const ratings = recipe.comments?.map((r: { rating: number }) => r.rating) || [];
   const averageRating =
     ratings.length > 0
       ? (ratings.reduce((acc: number, r: number) => acc + r, 0) / ratings.length).toFixed(1)
       : "0.0";
+
+      console.log("recipe.users", recipe.users);
+
+       // name and image_url
+    
+      
+
+
                   
                     
    return(
@@ -56,8 +65,8 @@ return (
            key={recipe.id}
            title={recipe.title}
            description={recipe.description}
-           username={recipe.users.name}
-           thumbnail={recipe.users.image_url}
+           username={user?.name}
+           thumbnail={user?.image_url}
            recipeImage={recipe.image_url}
            likeCount={recipe.likes.length}
            commentCount={recipe.comments.length}

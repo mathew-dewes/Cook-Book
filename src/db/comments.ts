@@ -1,6 +1,6 @@
 import { revalidatePath, revalidateTag, unstable_cache } from "next/cache";
 import { supabase } from "../../supabase-client";
-import { AddCommentArgs } from "./helpers/types";
+
 
 
 // GET
@@ -28,7 +28,9 @@ const { data, error } = await supabase
 
 // CREATE
 
-export async function addComment({comment, recipeId, userId, rating }: AddCommentArgs){  
+export async function addComment({comment, recipeId, userId, rating }:{
+  comment: string, recipeId: string, userId: string, rating: number
+}){  
 
 
   if (!comment || !recipeId || !userId) {

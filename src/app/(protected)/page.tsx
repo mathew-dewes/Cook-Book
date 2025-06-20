@@ -15,9 +15,9 @@ const query = params.query ?? "";
 const sort = (params.sort ?? "recent") as "popular" | "recent" | "az" | "ratings";
 
 
- 
+const recipes = await getRecipes(query, sort);
 
-  const recipes = await getRecipes(query, sort);
+  
 
   
 

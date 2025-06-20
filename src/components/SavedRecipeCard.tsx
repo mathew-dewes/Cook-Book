@@ -1,5 +1,5 @@
 // import RemoveSaveButton from "@/app/recipes/saved/_removeSaveButton";
-import { Recipe } from "@/db/helpers/types";
+import { SavedRecipeProps } from "@/db/helpers/types";
 import Image from "next/image";
 import Link from "next/link";
 import RemoveSaveButton from "./_removeSaveButton";
@@ -18,7 +18,7 @@ export default function SaveRecipeCard({
     userId,
     updated_at,
     averageRating
-}:Recipe) {
+}:SavedRecipeProps) {
 
 
     

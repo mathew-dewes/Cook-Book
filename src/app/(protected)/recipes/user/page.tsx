@@ -3,6 +3,8 @@
 import { auth } from "@/auth";
 import ProfileImage from "@/components/ProfileImage";
 import RecipeCard from "@/components/RecipeCard";
+
+
 import { getUsersRecipes } from "@/db/recipes";
 import { getUserDetails } from "@/db/users";
 import Image from "next/image";
@@ -16,7 +18,9 @@ export default async function Page() {
   const id = session?.user?.id as string;
   const recipes = await getUsersRecipes(id);
   const user = await getUserDetails(id);
-  console.log(user);
+
+  
+  
   
 
   
