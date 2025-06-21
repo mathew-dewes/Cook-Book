@@ -1,7 +1,9 @@
 "use client"
 
 import { addRecipeAction } from "@/actions/recipeActions";
+import imageCompression from "browser-image-compression";
 import { ChangeEvent, useActionState, useState } from "react"
+
 
 
 export default function AddRecipeForm({userId}:{userId: string}) {
@@ -29,11 +31,33 @@ export default function AddRecipeForm({userId}:{userId: string}) {
         }
     }
 
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>)=>{
-        if (e.target.files && e.target.files.length > 0){
-            setRecipeImage(e.target.files[0])
-        }
+const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+  if (e.target.files && e.target.files.length > 0) {
+    const file = e.target.files[0];
+    try {
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1024,
+        useWebWorker: true,
+      };
+      const compressedBlob = await imageCompression(file, options);
+
+      const compressedFile = new File([compressedBlob], file.name, {
+        type: compressedBlob.type,
+      });
+
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(compressedFile);
+
+      e.target.files = dataTransfer.files;
+
+      setRecipeImage(compressedFile);
+    } catch (error) {
+      console.error("Image compression failed:", error);
+      setRecipeImage(file);
     }
+  }
+};
     return (
         <div className="add__form">
        <form action={formAction}>

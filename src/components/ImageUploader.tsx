@@ -20,14 +20,12 @@ export default function ImageUploader({ user }: { user: { id: string; name: stri
     formData.append("userId", user.id);
 
     try {
-      console.log("Starting upload fetch...");
-
-
+  
       const res = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });
-      console.log("Fetch returned:", res.status);
+
 
       const data = await res.json();
 

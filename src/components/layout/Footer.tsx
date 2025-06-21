@@ -11,19 +11,7 @@ export default function Footer() {
         
               
          
-                <div className="footer__contact">
-                
-                  
-                            <h3>Contact me:</h3>
-                    <p><b>Phone:</b> 02121021201</p>
-                    <p><b>Email:</b> mathewdewes01@gmail.com</p>
-
-              
-           
-                 
-         
-                  
-                </div>
+             
 
 
             </div>

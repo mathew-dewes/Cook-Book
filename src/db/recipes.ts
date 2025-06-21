@@ -191,26 +191,25 @@ let image_url: string | null = null;
 
 
 async function uploadImage(imageFile: File, recipeId: string): Promise<string | null> {
-  // Save name of image to the ID of the recipe
-    const arrayBuffer = await imageFile.arrayBuffer();
-    const buffer = new Uint8Array(arrayBuffer);
-    const filePath = `recipes/${recipeId}`
+  const arrayBuffer = await imageFile.arrayBuffer();
+  const buffer = new Uint8Array(arrayBuffer);
+  const filePath = `recipes/${recipeId}-${Date.now()}`; // optional: make file name unique
 
-    const {  error } = await supabase.storage
-      .from("recipe-images") // 🔁 use your bucket name here
-      .upload(filePath, buffer, {
-        contentType: imageFile.type,
-        upsert: false,
-      });
+  const { error } = await supabase.storage
+    .from("recipe-images") // your bucket
+    .upload(filePath, buffer, {
+      contentType: imageFile.type,
+      upsert: false,
+    });
 
-    if (error) {
-      console.error("Upload failed:", error.message);
-    } 
-      
-    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/recipe-images/${filePath}`;
+  if (error) {
+    console.error("Upload failed:", error.message);
+    return null;
+  }
 
-
+  return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/recipe-images/${filePath}`;
 }
+
 
 
 // DELETE
